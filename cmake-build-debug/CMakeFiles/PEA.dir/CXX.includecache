@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dawid/CLionProjects/PEA/BST.h
+
+/home/dawid/CLionProjects/PEA/Matrix.cpp
+algorithm
+-
+Matrix.h
+/home/dawid/CLionProjects/PEA/Matrix.h
+fstream
+/home/dawid/CLionProjects/PEA/fstream
+iostream
+/home/dawid/CLionProjects/PEA/iostream
+BST.h
+/home/dawid/CLionProjects/PEA/BST.h
+
+/home/dawid/CLionProjects/PEA/Matrix.h
+string
+-
+
