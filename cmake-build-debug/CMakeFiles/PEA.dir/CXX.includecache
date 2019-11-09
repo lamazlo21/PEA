@@ -15,12 +15,18 @@ Matrix.h
 /home/dawid/CLionProjects/PEA/Matrix.h
 fstream
 /home/dawid/CLionProjects/PEA/fstream
-iostream
-/home/dawid/CLionProjects/PEA/iostream
 BST.h
 /home/dawid/CLionProjects/PEA/BST.h
+vector
+-
+limits.h
+-
 
 /home/dawid/CLionProjects/PEA/Matrix.h
+vector
+-
 string
+-
+iostream
 -
 

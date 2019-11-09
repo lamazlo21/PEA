@@ -13,7 +13,6 @@ void Tests::testQue() {
         std::string fileName;
         std::cout<<"Podaj nazwe pliku, ktory chcesz wczytac: ";
         std::cin>>fileName;
-        matrix.initializeMatrix(fileName);
         do{
             std::cout<<"Jaką operacje chcesz wykonac?"<<std::endl;
             std::cout<<"1. Wyswietl macierz"<<std::endl;
@@ -49,7 +48,6 @@ void Tests::testRandom() {
         std::string fileName;
         std::cout<<"Podaj nazwe pliku, ktory chcesz wczytac: ";
         std::cin>>fileName;
-        matrix.initializeMatrix(fileName);
         int tempArr[matrix.getMatrixSize()];
         for(int i=0;i<matrix.getMatrixSize();i++){
             tempArr[i] = i;
