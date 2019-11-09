@@ -4,37 +4,53 @@
 
 #ifndef PEA_MATRIX_H
 #define PEA_MATRIX_H
-
+#include <vector>
 #include <string>
+#include <iostream>
+
+using namespace::std;
 
 class Matrix{
-    std::string matrixName;
+
+    string matrixName;
+
     int matrixSize;
+
     int** matrix;
+
+    int* path;
+
     int* shortestPath;
+
+    int shortestPathValue;
+
 public:
+
+    Matrix(string);
 
     ~Matrix();
 
-    void initializeMatrix(std::string fileName);
+    string getName();
+
+    int getMatrixSize();
 
     void printMatrix();
 
     void printShortestPath();
 
-    std::string getName();
+    int pathValue(int*);
 
-    int getMatrixSize();
-
-    int pathValue(int arr[], int len);
-
-    void permute(int arr[],int begin, int len, int &min);
+    int pathValue(vector<int>);
 
     // Accurate algorithims
 
-    int bruteForceBST();
+    pair<int*, int> bruteForceBST();
 
-    int bruteForceSwap();
+    pair<int*, int> bruteForceSwap();
+
+    // Dynamic algorithims
+
+    int dynamic(int, vector<int>);
 
 
 };
