@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Matrix.h"
 #include "Tests.h"
+#include "BruteForce.h"
 #include <vector>
 #include <iostream>
 
@@ -13,12 +14,13 @@ int main() {
     for(int i=1;i<matrix.getMatrixSize();i++){
         x.push_back(i);
     }
-    pair<int*, int> bfPair = matrix.bruteForceSwap();
+    BruteForce force{matrix};
+    auto sol = force.bruteForceSwap();
     cout<<"Algorytm BF:"<<endl;
-    cout<<"Wartosc najkrotszej sciezki: "<<bfPair.second<<endl;
+    cout<<"Wartosc najkrotszej sciezki: "<<sol.value()<<endl;
     cout<<"Najkrotsza sciezka: ";
-    for(int i=0;i<matrix.getMatrixSize();i++)
-        cout<<bfPair.first[i]<<" ";
+    sol.print();
+
     cout<<endl;
     int dynamicMin = matrix.dynamic(0, x);
     cout<<"Algorytm Dynamiczny:"<<endl;

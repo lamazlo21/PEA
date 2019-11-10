@@ -21,7 +21,7 @@ Matrix::~Matrix() {
 Matrix::Matrix(string fileName) {
 
     ifstream file;
-    file.open("/home/dawid/CLionProjects/PEA/PEA/SMALL/"+fileName, ios::out);
+    file.open("../PEA/SMALL/"+fileName, ios::out);
     file >> matrixName;
     file >> matrixSize;
     shortestPath = new int[matrixSize];
@@ -60,7 +60,7 @@ void Matrix::printShortestPath() {
 }
 // --------------Matrix Size-------------------------------------
 
-int Matrix::getMatrixSize() {
+int Matrix::getMatrixSize() const {
     return matrixSize;
 }
 
@@ -80,7 +80,7 @@ std::string Matrix::getName() {
 
 // --------------Path Value-------------------------------------------
 
-int Matrix::pathValue(int* arr) {
+int Matrix::pathValue(int* arr) const{
 
     int min = 0;
     for(int i=0;i<matrixSize-1;i++)
@@ -103,33 +103,6 @@ int Matrix::pathValue(vector<int> arr) {
 
 
 // -------------Permute--------------------------------------
-
-pair<int*, int> Matrix::bruteForceSwap(){
-    int min, c=0, minCandidate;
-    int arr[matrixSize];
-    int* shortestPath;
-    shortestPath = new int[matrixSize];
-    for(int i=0;i<getMatrixSize();i++)
-        arr[i] = i;
-   sort(arr+1, arr+matrixSize);
-    do{
-        if(c==0) {
-            min = pathValue(arr);
-            for(int i=0;i<matrixSize;i++)
-                shortestPath[i] = arr[i];
-            c++;
-        }
-        else {
-            minCandidate = pathValue(arr);
-            if (minCandidate < min) {
-                min = minCandidate;
-                for(int i=0;i<matrixSize;i++)
-                    shortestPath[i] = arr[i];
-            }
-        }
-    }while(next_permutation(arr+1, arr+matrixSize));
-    return make_pair(shortestPath, min);
-}
 
 
 int Matrix::dynamic(int k, vector<int> s) {

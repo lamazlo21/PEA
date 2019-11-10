@@ -32,13 +32,13 @@ public:
 
     string getName();
 
-    int getMatrixSize();
+    int getMatrixSize() const;
 
     void printMatrix();
 
     void printShortestPath();
 
-    int pathValue(int*);
+    int pathValue(int*) const;
 
     int pathValue(vector<int>);
 
