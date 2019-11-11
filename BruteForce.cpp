@@ -12,7 +12,7 @@ BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix) {
 
 Solution BruteForce::bruteForceSwap(){
     int min, c=0, minCandidate;
-    int arr[matrix.getMatrixSize()];
+    int* arr = new int(matrix.getMatrixSize());
     Solution solution{};
     for(int i=0;i<matrix.getMatrixSize();i++)
         arr[i] = i;

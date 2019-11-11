@@ -21,7 +21,7 @@ void BranchAndBound::copyToFinal(int* curr_path)
     solution.addNode(curr_path[0], matrix[0][curr_path[0]]);
     for (int i=1; i<matrix.getMatrixSize(); i++)
         solution.addNode(curr_path[i], matrix[curr_path[i-1]][curr_path[i]]);
-    solution.addNode(curr_path[0], matrix[curr_path[matrix.getMatrixSize()]][curr_path[0]]);
+    solution.addNode(curr_path[0], matrix[curr_path[matrix.getMatrixSize()-1]][curr_path[0]]);
 }
 
 // Function to find the minimum edge cost
@@ -107,11 +107,19 @@ void BranchAndBound::TSPRec(int curr_bound, int curr_weight,
             // different computation of curr_bound for
             // level 2 from the other levels
             if (level==1)
-                curr_bound -= ((firstMin(curr_path[level-1]) +
-                                firstMin(i))/2);
-            else
                 curr_bound -= ((secondMin(curr_path[level-1]) +
-                                firstMin(i))/2);
+                                secondMin(i))/2);
+            else
+                curr_bound -= ((firstMin(curr_path[level-1]) +
+                                secondMin(i))/2);
+            // different computation of curr_bound for
+//            // level 2 from the other levels
+//            if (level==1)
+//                curr_bound -= ((firstMin(curr_path[level-1]) +
+//                                firstMin(i))/2);
+//            else
+//                curr_bound -= ((secondMin(curr_path[level-1]) +
+//                                firstMin(i))/2);
 
             // curr_bound + curr_weight is the actual lower bound
             // for the node that we have arrived on
@@ -176,6 +184,6 @@ Solution BranchAndBound::find() {
     // 0 and level 1
     TSPRec(curr_bound, 0, 1, curr_path);
     
-    return Solution();
+    return solution;
 }
 
