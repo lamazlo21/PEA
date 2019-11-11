@@ -15,8 +15,9 @@ class BranchAndBound {
 public:
     BranchAndBound(const Matrix &matrix);
 
-    Solution find();
+    void find();
 
+    Solution solution{};
 
 
 private:
@@ -28,7 +29,6 @@ private:
     // in a particular path
     std::unique_ptr<bool> visited;
 
-    Solution solution{};
 
     void copyToFinal(int *curr_path);
     int firstMin(int i);

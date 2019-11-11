@@ -6,7 +6,10 @@
 #include "Solution.h"
 
 
-Solution::Solution() {}
+Solution::Solution(int size) {
+    path.reserve(size);
+    _value = 0;
+}
 
 void Solution::addNode(int node, int value) {
     path.push_back(node);

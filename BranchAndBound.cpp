@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 
 
-BranchAndBound::BranchAndBound(const Matrix &matrix) : matrix(matrix) {
+BranchAndBound::BranchAndBound(const Matrix &matrix) : matrix(matrix), solution(matrix.getMatrixSize()+1) {
     visited = std::make_unique<bool>(matrix.getMatrixSize());
 }
 
@@ -148,7 +148,7 @@ void BranchAndBound::TSPRec(int curr_bound, int curr_weight,
     }
 }
 
-Solution BranchAndBound::find() {
+void BranchAndBound::find() {
     // final_path[] stores the final solution ie, the
     // path of the salesman.
     //int final_path[matrix.getMatrixSize()+1];
@@ -183,7 +183,6 @@ Solution BranchAndBound::find() {
     // Call to TSPRec for curr_weight equal to
     // 0 and level 1
     TSPRec(curr_bound, 0, 1, curr_path);
-    
-    return solution;
+
 }
 
