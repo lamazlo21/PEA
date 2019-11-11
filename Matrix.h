@@ -25,6 +25,8 @@ class Matrix{
     int shortestPathValue;
 
 public:
+    // Overloading [] operator to access elements in array style
+    int* const &operator[] (int) const;
 
     Matrix(string);
 
@@ -41,12 +43,6 @@ public:
     int pathValue(int*) const;
 
     int pathValue(vector<int>);
-
-    // Accurate algorithims
-
-    pair<int*, int> bruteForceBST();
-
-    pair<int*, int> bruteForceSwap();
 
     // Dynamic algorithims
 

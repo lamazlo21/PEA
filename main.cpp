@@ -2,6 +2,7 @@
 #include "Matrix.h"
 #include "Tests.h"
 #include "BruteForce.h"
+#include "BranchAndBound.h"
 #include <vector>
 #include <iostream>
 
@@ -17,6 +18,14 @@ int main() {
     BruteForce force{matrix};
     auto sol = force.bruteForceSwap();
     cout<<"Algorytm BF:"<<endl;
+    cout<<"Wartosc najkrotszej sciezki: "<<sol.value()<<endl;
+    cout<<"Najkrotsza sciezka: ";
+    sol.print();
+
+    BranchAndBound bnb{matrix};
+    sol.clear();
+    sol = bnb.find();
+    cout<<"\nAlgorytm BF:"<<endl;
     cout<<"Wartosc najkrotszej sciezki: "<<sol.value()<<endl;
     cout<<"Najkrotsza sciezka: ";
     sol.print();

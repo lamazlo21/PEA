@@ -22,3 +22,9 @@ void Solution::print() {
         std::cout<<e<<" ";
 
 }
+
+void Solution::clear() {
+    path.clear();
+    _value = 0;
+
+}

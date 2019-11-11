@@ -124,4 +124,7 @@ int Matrix::dynamic(int k, vector<int> s) {
     return min;
 }
 
+int* const &Matrix::operator[](int i) const{
+    return matrix[i];
+}
 

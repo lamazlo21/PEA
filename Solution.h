@@ -12,6 +12,7 @@ public:
     void addNode(int node, int value);
     int value();
     void print();
+    void clear();
 
 private:
     std::vector<int> path;
