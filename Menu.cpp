@@ -40,7 +40,7 @@ void Menu::menuMain() {
     }while(option!=5);
 }
 
-void Menu::menuBruteForce(Matrix matrix) {
+void Menu::menuBruteForce(const Matrix &matrix) {
     BruteForce bf{matrix};
     int option1, option2;
     Solution solution;
@@ -86,12 +86,12 @@ void Menu::menuBruteForce(Matrix matrix) {
     }while (option1!=2);
 }
 
-void Menu::menuDynamic(Matrix matrix) {
+void Menu::menuDynamic(const Matrix &matrix) {
     Dynamic dynamic{matrix};
     Solution solution{};
     vector<int> path;
     int option1, option2;
-    for(int i=0;i<matrix.getMatrixSize();i++)
+    for(int i=1;i<matrix.getMatrixSize();i++)
         path.push_back(i);
     do {
         cout << "Menu" << endl;
@@ -102,6 +102,51 @@ void Menu::menuDynamic(Matrix matrix) {
         switch (option1) {
             case 1:
                 solution = dynamic.dynamic(0, path);
+                do {
+                    cout << "1. Wyswietl wartosc sciezki" << endl;
+                    cout << "2. Wyswietl sciezke" << endl;
+                    cout << "3. Zakoncz" << endl;
+                    cout<<"Opcja: "<<endl;
+                    cin>>option2;
+                    switch (option2) {
+                        case 1:
+                            cout<<solution.value()<<endl;
+                            cout<<endl;
+                            break;
+                        case 2:
+                            solution.printReverse();
+                            cout<<endl;
+                            break;
+                        case 3:
+                            break;
+                        default:
+                            cout << "Nie ma takiej opcji!" << endl;
+                            break;
+                    }
+                }while (option2!=3);
+                    break;
+                    case 2:
+                        break;
+                    default:
+                        cout << "Nie ma takiej opcji!" << endl;
+                    break;
+
+        }
+    }while (option1!=2);
+}
+
+void Menu::menuBranchnndBound(const Matrix &matrix){
+    BranchAndBound bnb{matrix};
+    Solution solution{};
+    int option1, option2;
+    do {
+        cout << "Menu" << endl;
+        cout << "1. Wykonaj algorytm Branch and Bound" << endl;
+        cout << "2. Zakoncz" << endl;
+        cout<<"Opcja: "<<endl;
+        cin>>option1;
+        switch (option1) {
+                solution = bnb.find();
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -130,52 +175,6 @@ void Menu::menuDynamic(Matrix matrix) {
                     default:
                         cout << "Nie ma takiej opcji!" << endl;
                     break;
-
         }
     }while (option1!=2);
-}
-
-void Menu::menuBranchnndBound(Matrix matrix){
-    BranchAndBound bnb{matrix};
-    Solution solution{};
-    int option1, option2;
-    do {
-        cout << "Menu" << endl;
-        cout << "1. Wykonaj algorytm Branch and Bound" << endl;
-        cout << "2. Zakoncz" << endl;
-        cout<<"Opcja: "<<endl;
-        cin>>option1;
-        switch (option1) {
-            case 1:
-                solution = bnb.find();
-                do {
-                    cout << "1. Wyswietl wartosc sciezki" << endl;
-                    cout << "2. Wyswietl sciezke" << endl;
-                    cout << "3. Zakoncz" << endl;
-                    cout<<"Opcja: "<<endl;
-                    cin>>option2;
-                    switch (option2) {
-                        case 1:
-                            cout<<solution.value()<<endl;
-                            cout<<endl;
-                            break;
-                        case 2:
-                            solution.print();
-                            cout<<endl;
-                            break;
-                        case 3:
-                            break;
-                        default:
-                            cout << "Nie ma takiej opcji!" << endl;
-                            break;
-                    }
-                    break;
-                    case 2:
-                        break;
-                    default:
-                        cout << "Nie ma takiej opcji!" << endl;
-                    break;
-                }while (option2!=2);
-        }
-    }while (false);
 }
