@@ -13,6 +13,14 @@ void Solution::addNode(int node, int value) {
     _value+=value;
 }
 
+void Solution::addNode(int node) {
+    path.push_back(node);
+}
+
+void Solution::setValue(int value){
+    _value = value;
+}
+
 int Solution::value() {
     return _value;
 }

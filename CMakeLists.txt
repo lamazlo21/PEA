@@ -8,14 +8,10 @@ include_directories(.)
 add_executable(PEA
         BruteForce.cpp
         BruteForce.h
-        BST.cpp
-        BST.h
         main.cpp
         Matrix.cpp
         Matrix.h
         Solution.cpp
         Solution.h
-        Tests.cpp
-        Tests.h
         TestyAutomatyczne.cpp
-        TestyAutomatyczne.h BranchAndBound.cpp BranchAndBound.h)
+        TestyAutomatyczne.h BranchAndBound.cpp BranchAndBound.h Dynamic.cpp Dynamic.h Menu.cpp Menu.h)

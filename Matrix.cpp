@@ -5,7 +5,6 @@
 #include <algorithm>
 #include "Matrix.h"
 #include "fstream"
-#include "BST.h"
 #include <vector>
 #include <limits.h>
 
@@ -25,7 +24,6 @@ Matrix::Matrix(string fileName) {
     file >> matrixName;
     file >> matrixSize;
     shortestPath = new int[matrixSize];
-    shortestPathValue = 0;
     if(file.is_open()){
         matrix = new int*[matrixSize];
         for(int i=0; i<matrixSize; i++) {

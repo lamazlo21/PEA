@@ -18,11 +18,8 @@ class Matrix{
 
     int** matrix;
 
-    int* path;
-
     int* shortestPath;
 
-    int shortestPathValue;
 
 public:
     // Overloading [] operator to access elements in array style
