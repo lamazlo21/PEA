@@ -10,6 +10,8 @@ class Solution {
 public:
     Solution();
     void addNode(int node, int value);
+    void addNode(int node);
+    void setValue(int value);
     int value();
     void print();
     void clear();

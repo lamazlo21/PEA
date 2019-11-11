@@ -28,8 +28,12 @@ Solution BruteForce::bruteForceSwap(){
             minCandidate = matrix.pathValue(arr);
             if (minCandidate < min) {
                 min = minCandidate;
-                for(int i=0;i<matrix.getMatrixSize();i++)
-                    solution.addNode(arr[i], min);
+                solution.clear();
+                for(int i=0;i<matrix.getMatrixSize();i++) {
+                    solution.addNode(arr[i]);
+                solution.setValue(min);
+                }
+
             }
         }
     }while(next_permutation(arr+1, arr+matrix.getMatrixSize()));
