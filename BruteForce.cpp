@@ -6,14 +6,13 @@
 #include "BruteForce.h"
 #include "Solution.h"
 
-BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix) {
+BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix), solution(matrix.getMatrixSize()+1)  {
 
 }
 
-Solution BruteForce::bruteForceSwap(){
+void BruteForce::bruteForceSwap(){
     int min, c=0, minCandidate;
     int* arr = new int(matrix.getMatrixSize());
-    Solution solution{};
     for(int i=0;i<matrix.getMatrixSize();i++)
         arr[i] = i;
     sort(arr+1, arr+matrix.getMatrixSize());
@@ -38,6 +37,5 @@ Solution BruteForce::bruteForceSwap(){
             }
         }
     }while(next_permutation(arr+1, arr+matrix.getMatrixSize()));
-    return std::move(solution);
 }
 

@@ -43,7 +43,6 @@ void Menu::menuMain() {
 void Menu::menuBruteForce(const Matrix &matrix) {
     BruteForce bf{matrix};
     int option1, option2;
-    Solution solution;
     do {
         cout << "Menu" << endl;
         cout << "1. Wykonaj algorytm Brute Force" << endl;
@@ -52,7 +51,7 @@ void Menu::menuBruteForce(const Matrix &matrix) {
         cin>>option1;
         switch (option1) {
             case 1:
-                solution = bf.bruteForceSwap();
+                bf.bruteForceSwap();
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -61,15 +60,15 @@ void Menu::menuBruteForce(const Matrix &matrix) {
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<solution.value()<<endl;
+                            cout<<bf.solution.value()<<endl;
                             cout<<endl;
                             break;
                         case 2:
-                            solution.print();
+                            bf.solution.print();
                             cout<<endl;
                             break;
                         case 3:
-                            solution.clear();
+                            bf.solution.clear();
                             break;
                         default:
                             cout << "Nie ma takiej opcji!" << endl;
@@ -88,7 +87,8 @@ void Menu::menuBruteForce(const Matrix &matrix) {
 
 void Menu::menuDynamic(const Matrix &matrix) {
     Dynamic dynamic{matrix};
-    Solution solution{};
+    //Solution solution{};
+    pair<vector<int>, int> dynamicPair;
     vector<int> path;
     int option1, option2;
     for(int i=1;i<matrix.getMatrixSize();i++)
@@ -101,7 +101,8 @@ void Menu::menuDynamic(const Matrix &matrix) {
         cin>>option1;
         switch (option1) {
             case 1:
-                solution = dynamic.dynamic(0, path);
+               // solution = dynamic.dynamic(0, path);
+                dynamicPair = dynamic.dynamic(0, path);
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -110,11 +111,12 @@ void Menu::menuDynamic(const Matrix &matrix) {
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<solution.value()<<endl;
+                            cout<<dynamicPair.second<<endl;
                             cout<<endl;
                             break;
                         case 2:
-                            solution.printReverse();
+                            for(int i=dynamicPair.first.size()-1;i>=0;i--)
+                                cout<<dynamicPair.first[i]<<" ";
                             cout<<endl;
                             break;
                         case 3:

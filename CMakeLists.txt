@@ -13,4 +13,4 @@ add_executable(PEA
         Matrix.h
         Solution.cpp
         Solution.h
-        BranchAndBound.cpp BranchAndBound.h Dynamic.cpp Dynamic.h Menu.cpp Menu.h Measurements.cpp Measurements.h)
+        BranchAndBound.cpp BranchAndBound.h Dynamic.cpp Dynamic.h Menu.cpp Menu.h)
