@@ -13,7 +13,9 @@ class BruteForce {
 public:
     BruteForce(const Matrix &matrix);
 
-    Solution bruteForceSwap();
+    void bruteForceSwap();
+
+    Solution solution{};
 
 private:
     const Matrix& matrix;

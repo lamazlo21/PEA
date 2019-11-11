@@ -14,7 +14,10 @@ class Dynamic{
 public:
     Dynamic(const Matrix &matrix);
 
-    Solution dynamic(int, vector<int>);
+   // Solution dynamic(int, vector<int>);
+    pair<vector<int>, int> dynamic(int, vector<int>);
+
+    Solution solution{};
 
 private:
     const Matrix& matrix;
