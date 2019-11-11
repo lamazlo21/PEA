@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.15)
 project(PEA)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -6,12 +6,12 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(PEA
-        BST.cpp
-        BST.h
+        BruteForce.cpp
+        BruteForce.h
         main.cpp
         Matrix.cpp
         Matrix.h
-        Tests.cpp
-        Tests.h
+        Solution.cpp
+        Solution.h
         TestyAutomatyczne.cpp
-        TestyAutomatyczne.h Solution.cpp Solution.h BruteForce.cpp BruteForce.h)
+        TestyAutomatyczne.h BranchAndBound.cpp BranchAndBound.h Dynamic.cpp Dynamic.h Menu.cpp Menu.h)

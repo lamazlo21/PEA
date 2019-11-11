@@ -13,6 +13,14 @@ void Solution::addNode(int node, int value) {
     _value+=value;
 }
 
+void Solution::addNode(int node) {
+    path.push_back(node);
+}
+
+void Solution::setValue(int value){
+    _value = value;
+}
+
 int Solution::value() {
     return _value;
 }
@@ -20,5 +28,11 @@ int Solution::value() {
 void Solution::print() {
     for(auto e : path)
         std::cout<<e<<" ";
+
+}
+
+void Solution::clear() {
+    path.clear();
+    _value = 0;
 
 }

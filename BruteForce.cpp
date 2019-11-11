@@ -12,7 +12,7 @@ BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix) {
 
 Solution BruteForce::bruteForceSwap(){
     int min, c=0, minCandidate;
-    int arr[matrix.getMatrixSize()];
+    int* arr = new int(matrix.getMatrixSize());
     Solution solution{};
     for(int i=0;i<matrix.getMatrixSize();i++)
         arr[i] = i;
@@ -28,8 +28,12 @@ Solution BruteForce::bruteForceSwap(){
             minCandidate = matrix.pathValue(arr);
             if (minCandidate < min) {
                 min = minCandidate;
-                for(int i=0;i<matrix.getMatrixSize();i++)
-                    solution.addNode(arr[i], min);
+                solution.clear();
+                for(int i=0;i<matrix.getMatrixSize();i++) {
+                    solution.addNode(arr[i]);
+                solution.setValue(min);
+                }
+
             }
         }
     }while(next_permutation(arr+1, arr+matrix.getMatrixSize()));
