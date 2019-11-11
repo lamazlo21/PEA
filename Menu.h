@@ -16,11 +16,12 @@ public:
 
     void menuMain();
 
-    void menuBranchnndBound(const Matrix&);
 
-    void menuBruteForce(Matrix);
+    void menuBranchnndBound(const Matrix &matrix);
 
-    void menuDynamic(Matrix);
+    void menuBruteForce(const Matrix &matrix);
+
+    void menuDynamic(const Matrix &matrix);
 };
 
 #endif //PEA_MENU_H

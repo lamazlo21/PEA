@@ -34,8 +34,22 @@ void Solution::print() {
 
 }
 
+void Solution::printReverse() {
+    for(int i= pathLength()-1;i>=0;i--)
+        std::cout<<path[i]<<" ";
+
+}
+
 void Solution::clear() {
     path.clear();
     _value = 0;
 
+}
+
+int Solution::nodeValue(int i){
+    return path[i];
+}
+
+int Solution::pathLength() {
+    return path.size();
 }

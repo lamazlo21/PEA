@@ -21,7 +21,8 @@ Solution BruteForce::bruteForceSwap(){
         if(c==0) {
             min = matrix.pathValue(arr);
             for(int i=0;i<matrix.getMatrixSize();i++)
-                solution.addNode(arr[i], min);
+                solution.addNode(arr[i]);
+            solution.setValue(min);
             c++;
         }
         else {

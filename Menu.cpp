@@ -40,7 +40,7 @@ void Menu::menuMain() {
     }while(option!=5);
 }
 
-void Menu::menuBruteForce(Matrix matrix) {
+void Menu::menuBruteForce(const Matrix &matrix) {
     BruteForce bf{matrix};
     int option1, option2;
     Solution solution;
@@ -86,12 +86,12 @@ void Menu::menuBruteForce(Matrix matrix) {
     }while (option1!=2);
 }
 
-void Menu::menuDynamic(Matrix matrix) {
+void Menu::menuDynamic(const Matrix &matrix) {
     Dynamic dynamic{matrix};
     Solution solution{};
     vector<int> path;
     int option1, option2;
-    for(int i=0;i<matrix.getMatrixSize();i++)
+    for(int i=1;i<matrix.getMatrixSize();i++)
         path.push_back(i);
     do {
         cout << "Menu" << endl;
@@ -114,7 +114,7 @@ void Menu::menuDynamic(Matrix matrix) {
                             cout<<endl;
                             break;
                         case 2:
-                            solution.print();
+                            solution.printReverse();
                             cout<<endl;
                             break;
                         case 3:
@@ -147,7 +147,7 @@ void Menu::menuBranchnndBound(const Matrix& matrix){
         switch (option1) {
             case 1:
                 bnb.find();
-                do {
+                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
                     cout << "3. Zakoncz" << endl;
@@ -168,13 +168,13 @@ void Menu::menuBranchnndBound(const Matrix& matrix){
                             cout << "Nie ma takiej opcji!" << endl;
                             break;
                     }
+                }while (option2!=3);
                     break;
                     case 2:
                         break;
                     default:
                         cout << "Nie ma takiej opcji!" << endl;
                     break;
-                }while (option2!=2);
         }
-    }while (false);
+    }while (option1!=2);
 }
