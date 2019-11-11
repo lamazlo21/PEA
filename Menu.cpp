@@ -135,9 +135,8 @@ void Menu::menuDynamic(const Matrix &matrix) {
     }while (option1!=2);
 }
 
-void Menu::menuBranchnndBound(const Matrix &matrix){
+void Menu::menuBranchnndBound(const Matrix& matrix){
     BranchAndBound bnb{matrix};
-    Solution solution{};
     int option1, option2;
     do {
         cout << "Menu" << endl;
@@ -146,8 +145,9 @@ void Menu::menuBranchnndBound(const Matrix &matrix){
         cout<<"Opcja: "<<endl;
         cin>>option1;
         switch (option1) {
-                solution = bnb.find();
-                do {
+            case 1:
+                bnb.find();
+                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
                     cout << "3. Zakoncz" << endl;
@@ -155,11 +155,11 @@ void Menu::menuBranchnndBound(const Matrix &matrix){
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<solution.value()<<endl;
+                            cout<<bnb.solution.value()<<endl;
                             cout<<endl;
                             break;
                         case 2:
-                            solution.print();
+                            bnb.solution.print();
                             cout<<endl;
                             break;
                         case 3:

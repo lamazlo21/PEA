@@ -8,7 +8,9 @@
 
 class Solution {
 public:
-    Solution();
+    Solution()=default;
+    explicit Solution(int);
+
     void addNode(int node, int value);
     void addNode(int node);
     void setValue(int value);
@@ -20,7 +22,7 @@ public:
     void clear();
 
 private:
-    std::vector<int> path;
+    std::vector<int> path{};
     int _value;
 
 };

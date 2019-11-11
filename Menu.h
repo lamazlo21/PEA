@@ -16,6 +16,7 @@ public:
 
     void menuMain();
 
+
     void menuBranchnndBound(const Matrix &matrix);
 
     void menuBruteForce(const Matrix &matrix);

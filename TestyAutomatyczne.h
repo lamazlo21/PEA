@@ -1,9 +1,0 @@
-//
-// Created by dawid on 18.10.2019.
-//
-
-#ifndef PEA_TESTYAUTOMATYCZNE_H
-#define PEA_TESTYAUTOMATYCZNE_H
-
-
-#endif //PEA_TESTYAUTOMATYCZNE_H
