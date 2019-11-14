@@ -42,6 +42,9 @@ void Menu::menuMain() {
 
 void Menu::menuBruteForce(const Matrix &matrix) {
     BruteForce bf{matrix};
+    int* permuteArr = new int[matrix.getMatrixSize()];
+    for(int i=0; i<matrix.getMatrixSize();i++)
+        permuteArr[i] = i;
     int option1, option2;
     do {
         cout << "Menu" << endl;
@@ -51,7 +54,7 @@ void Menu::menuBruteForce(const Matrix &matrix) {
         cin>>option1;
         switch (option1) {
             case 1:
-                bf.bruteForceSwap();
+                bf.bruteForceSwap(permuteArr, 1);
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -87,8 +90,7 @@ void Menu::menuBruteForce(const Matrix &matrix) {
 
 void Menu::menuDynamic(const Matrix &matrix) {
     Dynamic dynamic{matrix};
-    //Solution solution{};
-    pair<vector<int>, int> dynamicPair;
+    Solution solution{matrix.getMatrixSize()+1};
     vector<int> path;
     int option1, option2;
     for(int i=1;i<matrix.getMatrixSize();i++)
@@ -101,8 +103,7 @@ void Menu::menuDynamic(const Matrix &matrix) {
         cin>>option1;
         switch (option1) {
             case 1:
-               // solution = dynamic.dynamic(0, path);
-                dynamicPair = dynamic.dynamic(0, path);
+                solution = dynamic.dynamic(0, path);
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -111,12 +112,11 @@ void Menu::menuDynamic(const Matrix &matrix) {
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<dynamicPair.second<<endl;
+                            cout<<solution.value();
                             cout<<endl;
                             break;
                         case 2:
-                            for(int i=dynamicPair.first.size()-1;i>=0;i--)
-                                cout<<dynamicPair.first[i]<<" ";
+                            solution.printReverse();
                             cout<<endl;
                             break;
                         case 3:
@@ -157,10 +157,11 @@ void Menu::menuBranchnndBound(const Matrix& matrix){
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<bnb.solution.value()<<endl;
+                            cout<<bnb.solution.value()+1<<endl;
                             cout<<endl;
                             break;
                         case 2:
+                            bnb.solution.pop();
                             bnb.solution.print();
                             cout<<endl;
                             break;

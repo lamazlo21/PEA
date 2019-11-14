@@ -49,13 +49,6 @@ void Matrix::printMatrix() {
     }
 }
 
-//---------------Shorest Path Print------------------------------
-
-void Matrix::printShortestPath() {
-    for (int i = 0; i < matrixSize; i++)
-        cout << shortestPath[i] << " ";
-    cout << endl;
-}
 // --------------Matrix Size-------------------------------------
 
 int Matrix::getMatrixSize() const {
@@ -67,14 +60,6 @@ int Matrix::getMatrixSize() const {
 std::string Matrix::getName() {
     return matrixName;
 }
-
-// --------------Brute Force BST-------------------------------------
-/*int Matrix::bruteForceBST(){
-    BST bst;
-
-}*/
-
-// --------------Brute Force Swap-------------------------------------
 
 // --------------Path Value-------------------------------------------
 
@@ -88,20 +73,7 @@ int Matrix::pathValue(int* arr) const{
 
 }
 
-int Matrix::pathValue(vector<int> arr) {
-
-    int min = 0;
-    for(int i=0;i<arr.size()-1;i++)
-        min+=matrix[arr[i]][arr[i+1]];
-    min+=matrix[arr[arr.size()-1]][0];
-    return min;
-
-}
-
-
-
 // -------------Permute--------------------------------------
-
 
 int Matrix::dynamic(int k, vector<int> s) {
     if (s.empty()) {

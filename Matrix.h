@@ -1,7 +1,3 @@
-//
-// Created by dawid on 09.10.2019.
-//
-
 #ifndef PEA_MATRIX_H
 #define PEA_MATRIX_H
 #include <vector>
@@ -39,12 +35,9 @@ public:
 
     int pathValue(int*) const;
 
-    int pathValue(vector<int>);
-
     // Dynamic algorithims
 
     int dynamic(int, vector<int>);
-
 
 };
 

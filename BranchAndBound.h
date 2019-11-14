@@ -1,7 +1,3 @@
-//
-// Created by shiro on 10.11.19.
-//
-
 #ifndef PEA_BRANCHANDBOUND_H
 #define PEA_BRANCHANDBOUND_H
 
@@ -23,10 +19,7 @@ public:
 private:
     const Matrix& matrix;
 
-    // Stores the final minimum weight of shortest tour.
     int final_res = INT_MAX;
-    // visited[] keeps track of the already visited nodes
-    // in a particular path
     std::unique_ptr<bool> visited;
 
 
@@ -37,6 +30,5 @@ private:
                 int level, int curr_path[]);
 
 };
-
 
 #endif //PEA_BRANCHANDBOUND_H

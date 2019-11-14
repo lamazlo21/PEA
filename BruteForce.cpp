@@ -1,41 +1,28 @@
-//
-// Created by shiro on 09.11.19.
-//
-
-#include <algorithm>
 #include "BruteForce.h"
 #include "Solution.h"
 
-BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix), solution(matrix.getMatrixSize()+1)  {
+BruteForce::BruteForce(const Matrix &matrix) : matrix(matrix), solution(matrix.getMatrixSize()+1) {
 
 }
 
-void BruteForce::bruteForceSwap(){
-    int min, c=0, minCandidate;
-    int* arr = new int(matrix.getMatrixSize());
-    for(int i=0;i<matrix.getMatrixSize();i++)
-        arr[i] = i;
-    sort(arr+1, arr+matrix.getMatrixSize());
-    do{
-        if(c==0) {
-            min = matrix.pathValue(arr);
+void BruteForce::bruteForceSwap(int* arr,int begin){
+    if(begin==matrix.getMatrixSize()-1) {
+        int temp = matrix.pathValue(arr);
+        if(temp < solution.value()) {
+            solution.clear();
+            solution.setValue(temp);
             for(int i=0;i<matrix.getMatrixSize();i++)
-                solution.addNode(arr[i]);
-            solution.setValue(min);
-            c++;
+               solution.addNode(arr[i]);
         }
-        else {
-            minCandidate = matrix.pathValue(arr);
-            if (minCandidate < min) {
-                min = minCandidate;
-                solution.clear();
-                for(int i=0;i<matrix.getMatrixSize();i++) {
-                    solution.addNode(arr[i]);
-                solution.setValue(min);
-                }
+    }
+    else{
+        for(int i=begin; i<matrix.getMatrixSize();i++){
+            std::swap(arr[begin],arr[i]);
 
-            }
+            bruteForceSwap(arr,begin+1);
+
+            std::swap(arr[begin], arr[i]);
         }
-    }while(next_permutation(arr+1, arr+matrix.getMatrixSize()));
+    }
 }
 

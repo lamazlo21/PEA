@@ -5,6 +5,7 @@
 #ifndef PEA_SOLUTION_H
 #define PEA_SOLUTION_H
 #include <vector>
+#include <climits>
 
 class Solution {
 public:
@@ -18,6 +19,7 @@ public:
     int pathLength();
     int value();
     void print();
+    void pop();
     void printReverse();
     void clear();
 
