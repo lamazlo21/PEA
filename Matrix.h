@@ -7,7 +7,6 @@
 using namespace::std;
 
 class Matrix{
-
     string matrixName;
 
     int matrixSize;
@@ -18,7 +17,6 @@ class Matrix{
 
 
 public:
-    // Overloading [] operator to access elements in array style
     int* const &operator[] (int) const;
 
     Matrix(string);
@@ -31,13 +29,7 @@ public:
 
     void printMatrix();
 
-    void printShortestPath();
-
     int pathValue(int*) const;
-
-    // Dynamic algorithims
-
-    int dynamic(int, vector<int>);
 
 };
 

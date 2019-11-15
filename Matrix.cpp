@@ -73,27 +73,6 @@ int Matrix::pathValue(int* arr) const{
 
 }
 
-// -------------Permute--------------------------------------
-
-int Matrix::dynamic(int k, vector<int> s) {
-    if (s.empty()) {
-        return matrix[k][0];
-    }
-
-    int min = INT_MAX;
-    for(int i=0;i<s.size();i++){
-            int first = s[i];
-            s.erase(s.begin() + i);
-            int minCandidate = matrix[k][first] + dynamic(first, s);
-
-            if(minCandidate<min) {
-                 min = minCandidate;
-            }
-            s.insert(s.begin(), first);
-        }
-    return min;
-}
-
 int* const &Matrix::operator[](int i) const{
     return matrix[i];
 }

@@ -3,6 +3,7 @@
 //
 
 #include "Menu.h"
+#include <chrono>
 void Menu::menuMain() {
     string fileName;
     int option;
@@ -45,6 +46,8 @@ void Menu::menuBruteForce(const Matrix &matrix) {
     int* permuteArr = new int[matrix.getMatrixSize()];
     for(int i=0; i<matrix.getMatrixSize();i++)
         permuteArr[i] = i;
+    chrono::time_point<chrono::system_clock> start, end;
+    chrono::duration<double> elapsedSeconds;
     int option1, option2;
     do {
         cout << "Menu" << endl;
@@ -54,7 +57,11 @@ void Menu::menuBruteForce(const Matrix &matrix) {
         cin>>option1;
         switch (option1) {
             case 1:
+                start = chrono::system_clock::now();
                 bf.bruteForceSwap(permuteArr, 1);
+                end = chrono::system_clock::now();
+                elapsedSeconds = end - start;
+                cout<<"Czas wykonania algorytmu BF: "<<elapsedSeconds.count()<<"s"<<endl;
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -90,20 +97,24 @@ void Menu::menuBruteForce(const Matrix &matrix) {
 
 void Menu::menuDynamic(const Matrix &matrix) {
     Dynamic dynamic{matrix};
-    Solution solution{matrix.getMatrixSize()+1};
-    vector<int> path;
+    int bitmask = 1, curr = 0;
+    chrono::time_point<chrono::system_clock> start, end;
+    chrono::duration<double> elapsedSeconds;
+    pair<vector<int>, int> minPair;
     int option1, option2;
-    for(int i=1;i<matrix.getMatrixSize();i++)
-        path.push_back(i);
     do {
         cout << "Menu" << endl;
-        cout << "1. Wykonaj algorytm Dynamic" << endl;
+        cout << "1. Wykonaj algorytm Dynamiczny" << endl;
         cout << "2. Zakoncz" << endl;
         cout<<"Opcja: "<<endl;
         cin>>option1;
         switch (option1) {
             case 1:
-                solution = dynamic.dynamic(0, path);
+                start = chrono::system_clock::now();
+                minPair = dynamic.dynamic(bitmask, curr);
+                end = chrono::system_clock::now();
+                elapsedSeconds = end - start;
+                cout<<"Czas wykonania algorytmu dynamicznego: "<<elapsedSeconds.count()<<"s"<<endl;
                 do {
                     cout << "1. Wyswietl wartosc sciezki" << endl;
                     cout << "2. Wyswietl sciezke" << endl;
@@ -112,11 +123,12 @@ void Menu::menuDynamic(const Matrix &matrix) {
                     cin>>option2;
                     switch (option2) {
                         case 1:
-                            cout<<solution.value();
+                            cout<<minPair.second;
                             cout<<endl;
                             break;
                         case 2:
-                            solution.printReverse();
+                            for(int i=minPair.first.size()-1; i>=0; i--)
+                                cout<<minPair.first[i]<<" ";
                             cout<<endl;
                             break;
                         case 3:

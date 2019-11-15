@@ -86,7 +86,6 @@ void BranchAndBound::TSPRec(int curr_bound, int curr_weight,
                 curr_path[level] = i;
                 visited.get()[i] = true;
 
-                // call TSPRec for the next level
                 TSPRec(curr_bound, curr_weight, level+1,
                        curr_path);
             }
@@ -109,9 +108,10 @@ void BranchAndBound::find() {
     memset(curr_path, -1, sizeof(int)*matrix.getMatrixSize()+1);
     memset(visited.get(), 0, sizeof(bool)*matrix.getMatrixSize());
 
-    for (int i=0; i<matrix.getMatrixSize(); i++)
+    for (int i=0; i<matrix.getMatrixSize(); i++) {
         curr_bound += (firstMin(i) +
                        secondMin(i));
+    }
 
     curr_bound = (curr_bound&1)? curr_bound/2 + 1 :
                  curr_bound/2;
