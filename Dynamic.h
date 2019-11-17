@@ -9,18 +9,20 @@
 #include "Solution.h"
 #include <climits>
 #include <vector>
+#include <math.h>
 
 class Dynamic{
 public:
     Dynamic(const Matrix &matrix);
 
-   // Solution dynamic(int, vector<int>);
-    pair<vector<int>, int> dynamic(int, vector<int>);
+    ~Dynamic();
 
-    Solution solution{};
+    pair<vector<int>,int> dynamic(int, int);
 
 private:
     const Matrix& matrix;
+
+    pair<vector<int>, int>** subsets;
 };
 
 #endif //PEA_DYNAMIC_H

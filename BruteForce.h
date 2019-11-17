@@ -7,19 +7,19 @@
 
 #include "Matrix.h"
 #include "Solution.h"
+#include <climits>
 
 
 class BruteForce {
 public:
-    BruteForce(const Matrix &matrix);
+    BruteForce(const Matrix &);
 
-    void bruteForceSwap();
+    void bruteForceSwap(int*, int);
 
     Solution solution{};
 
 private:
     const Matrix& matrix;
-
 };
 
 

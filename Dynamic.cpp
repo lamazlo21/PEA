@@ -1,72 +1,62 @@
-//
-// Created by dawid on 11.11.2019.
-//
-
 #include "Dynamic.h"
-
-Dynamic::Dynamic(const Matrix &matrix) : matrix(matrix){
-
-}
 
 using namespace std;
 
-/*Solution Dynamic::dynamic(int k, vector<int> s) {
-
-    Solution solution{};
-
-    if (s.empty()) {
-        solution.setValue(matrix[k][0]);
-        solution.addNode(k);
-        return solution;
+Dynamic::Dynamic(const Matrix &matrix) : matrix(matrix){
+    int colNumber = pow(2,matrix.getMatrixSize())-1;
+    subsets = new pair<vector<int>, int>*[colNumber];
+    for(int i=0; i<colNumber; i++) {
+        subsets[i] = new pair<vector<int>, int>[matrix.getMatrixSize()];
+        for(int j=0;j<matrix.getMatrixSize();j++)
+            subsets[i][j].second = -1;
     }
+}
 
-    int min = INT_MAX;
+Dynamic::~Dynamic(){
+    delete [] subsets;
+}
 
-    for(int i=0;i<s.size();i++){
-        int first = s[i];
-        s.erase(s.begin() + i);
-        Solution solutionCandidate = dynamic(first, s);
-        solutionCandidate.setValue(matrix[k][first] + solutionCandidate.value());
-        solutionCandidate.addNode(k);
-        if(solutionCandidate.value()<min) {
-            min = solutionCandidate.value();
-            solution.clear();
-            solution.setValue(min);
-            for(int j=0;j<solutionCandidate.pathLength();j++)
-                solution.addNode(solutionCandidate.nodeValue(j));
-        }
-        s.insert(s.begin(), first);
-    }
-    return move(solution);
-}*/
-
-pair<vector<int>, int>  Dynamic::dynamic(int k, vector<int> s) {
+pair<vector<int>, int> Dynamic::dynamic(int bitmask, int curr) {
 
     vector<int> path;
 
-    if (s.empty()) {
-        path.push_back(k);
-        return make_pair(path, matrix[k][0]);
+    if(subsets[bitmask-1][curr].second!=-1) {
+        return subsets[bitmask - 1][curr];
+    }
+
+    if(bitmask == (1 << matrix.getMatrixSize()) -1) {
+        path.push_back(curr);
+        return make_pair(path, matrix[curr][0]);
     }
 
     int min = INT_MAX;
 
-    for(int i=0;i<s.size();i++){
-        int first = s[i];
-        s.erase(s.begin() + i);
-        pair<vector<int>, int> pairCandidate = dynamic(first, s);
-        int minCandidate = matrix[k][first] + pairCandidate.second;
-        vector<int> pathCandidate;
-        for(int e : pairCandidate.first)
-            pathCandidate.push_back(e);
-        pathCandidate.push_back(k);
-        if(minCandidate<min) {
-            min = minCandidate;
-            path.clear();
-            for(int j=0;j<pathCandidate.size();j++)
-                path.push_back(pathCandidate[j]);
+    for(int i=0; i<matrix.getMatrixSize(); i++){
+
+        int res = bitmask & (1 << i);
+
+        if(res == 0){
+
+            int nBitmask = bitmask | (1 << i);
+
+            pair<vector<int>, int> nPair = dynamic(nBitmask, i);
+
+            int nMin = matrix[curr][i] + nPair.second;
+
+            vector<int> nPath(nPair.first);
+
+            nPath.push_back(curr);
+
+            if(nMin < min) {
+                min = nMin;
+                path = nPath;
+            }
         }
-        s.insert(s.begin(), first);
     }
+
+    subsets[bitmask-1][curr].second = min;
+
+    subsets[bitmask-1][curr].first = path;
+
     return make_pair(path, min);
 }

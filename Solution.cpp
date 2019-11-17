@@ -6,9 +6,10 @@
 #include "Solution.h"
 
 
+
 Solution::Solution(int size) {
     path.reserve(size);
-    _value = 0;
+    _value = INT_MAX;
 }
 
 void Solution::addNode(int node, int value) {
@@ -32,6 +33,10 @@ void Solution::print() {
     for(auto e : path)
         std::cout<<e<<" ";
 
+}
+
+void Solution::pop(){
+    path.pop_back();
 }
 
 void Solution::printReverse() {
